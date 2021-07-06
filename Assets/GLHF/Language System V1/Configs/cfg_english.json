@@ -1,0 +1,17 @@
+{
+	"IsRTL": false,
+	"TokenList": [
+		{
+			"Key": "test_01",
+			"Value": "Hello"
+		},
+		{
+			"Key": "test_02",
+			"Value": "Press E for English"
+		},
+		{
+			"Key": "test_03",
+			"Value": "Press R for Russian"
+		}
+	]
+}

@@ -3,8 +3,11 @@ using GLHF.FoldingVariables;
 
 public class Example : MonoBehaviour
 {
-    [SerializeField] private string _testNumber1;
-    [SerializeField] private int _testNumber2;
-    [FoldingVariable] [SerializeField] private int _testNumber3;
-    [FoldingVariable] [SerializeField] private GameObject _testNumber4;
+    [SerializeField] private int _serializedVariable = 1;
+    
+    [FoldingVariable] [HideInInspector] public int _hiddenFoldedVariable = 2;
+    
+    [FoldingVariable] [SerializeField] private string _foldedVariable01 = "This is a folded variable";
+    
+    [FoldingVariable] [SerializeField] private GameObject _foldedVariable02 = null;
 }

@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f53fdc022619e478d2b32c86d92026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testNumber1: This is a test
-  _testNumber2: 123
-  _testNumber3: 456
-  _testNumber4: {fileID: 963194225}
+  _serializedVariable: 1
+  _hiddenFoldedVariable: 2
+  _foldedVariable01: This is a folded variable
+  _foldedVariable02: {fileID: 622084075}
 --- !u!4 &622084077
 Transform:
   m_ObjectHideFlags: 0

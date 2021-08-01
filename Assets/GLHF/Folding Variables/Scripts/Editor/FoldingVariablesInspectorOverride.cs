@@ -12,13 +12,14 @@ namespace GLHF.FoldingVariables
     {
         private bool _showDebugger = false;
         private List<FieldInfo> _fieldsToHide;
+        private const string _foldoutHeader = "Debugger";
 
         public override void OnInspectorGUI()
         {
             try
             {
                 DrawScriptProperty();
-                FindDebugAttribute();
+                FindFoldingVariableAttributes();
                 DrawFoldoutHeader();
                 DrawFoldoutContent();
 
@@ -43,7 +44,7 @@ namespace GLHF.FoldingVariables
             }
         }
         
-        private void FindDebugAttribute()
+        private void FindFoldingVariableAttributes()
         {
             _fieldsToHide = new List<FieldInfo>();
             var _bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
@@ -51,23 +52,32 @@ namespace GLHF.FoldingVariables
 
             for (int i = 0; i < _listOfAllFields.Length; i++)
             {
-                var attributeFound = Attribute.GetCustomAttribute(_listOfAllFields[i], typeof(FoldingVariable)) != null;
+                CheckFieldAttributes(_listOfAllFields[i]);
+            }
+        }
 
-                if (attributeFound)
-                {
-                    _fieldsToHide.Add(_listOfAllFields[i]);
-                }
-                else
-                {
-                    //if not serielizable (public / serialized field), dont do anything
-                    var serializedProperty = serializedObject.FindProperty(_listOfAllFields[i].Name);
-                    var propertyFound = serializedProperty != null;
+        private void CheckFieldAttributes(FieldInfo fieldInfo)
+        {
+            var variableIsHidden = Attribute.GetCustomAttribute(fieldInfo, typeof(HideInInspector)) != null;
 
-                    if (propertyFound)
-                    {
-                        EditorGUILayout.PropertyField(serializedProperty, new GUIContent(serializedProperty.displayName));
-                    }
-                }
+            if (variableIsHidden)
+                return;
+
+            var foldingVariableFound = Attribute.GetCustomAttribute(fieldInfo, typeof(FoldingVariable)) != null;
+
+            if (foldingVariableFound)
+            {
+                _fieldsToHide.Add(fieldInfo);
+                return;
+            }
+
+            // If not serielizable (public / serialized field), dont do anything
+            var serializedProperty = serializedObject.FindProperty(fieldInfo.Name);
+            var propertyFound = serializedProperty != null;
+
+            if (propertyFound)
+            {
+                EditorGUILayout.PropertyField(serializedProperty, new GUIContent(serializedProperty.displayName));
             }
         }
 
@@ -83,7 +93,7 @@ namespace GLHF.FoldingVariables
                 fontStyle = FontStyle.Bold
             };
 
-            _showDebugger = EditorGUILayout.Foldout(_showDebugger, "Debugger", true, guiStyle);
+            _showDebugger = EditorGUILayout.Foldout(_showDebugger, _foldoutHeader, true, guiStyle);
         }
 
         private void DrawFoldoutContent()

@@ -3,7 +3,7 @@ using UnityEditor;
 
 public class ProjectStatsWindow : EditorWindow
 {
-    private ProjectStatsObject dataFile;
+    private ProjectStatsObject _dataFile;
 
     [MenuItem("GLHF/Project Stats #F1", false, 0)]
     static void Init()
@@ -12,39 +12,38 @@ public class ProjectStatsWindow : EditorWindow
         window.Show();
     }
 
-    private void OnEnable()
-    {
-        if (dataFile != null)
-            return;
-
-        dataFile = ProjectStatsManager.DataFile;
-
-        if (dataFile == null)
-            Close();
-    }
-
     private void Update()
     {
+        _dataFile = ProjectStatsFileHandler.DataFile;
+
         Repaint();
     }
 
     private void OnGUI()
     {
-        if (dataFile == null)
+        if (_dataFile == null)
             return;
+        
+        // Not implemented yet!
+        // isPlay total time
+        // Editor total time
+        // Reset data in settings?
+        //EditorGUILayout.LabelField("Settings:");
+        //GUILayout.Toggle(true, "Date Format");
 
-        var timer = CalculateClockTime(dataFile.TotalTotalTime + dataFile.CurrentSessionTime);
-        var longest = CalculateClockTime(dataFile.LongestSession);
+
+        var timer = CalculateClockTime(_dataFile.TotalTotalTime + _dataFile.CurrentSessionTime);
+        var longest = CalculateClockTime(_dataFile.LongestSession);
 
         EditorGUILayout.LabelField("Project:");
         GUILayout.Label("Total Time: " + timer, EditorStyles.boldLabel);
-        GUILayout.Label("Start Date: " + dataFile.StartDate, EditorStyles.boldLabel);
+        GUILayout.Label("Start Date: " + _dataFile.StartDate, EditorStyles.boldLabel);
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Session:");
-        GUILayout.Label("Total Sessions: " + dataFile.TotalEditorEntries, EditorStyles.boldLabel);
+        GUILayout.Label("Total Sessions: " + _dataFile.TotalEditorEntries, EditorStyles.boldLabel);
         GUILayout.Label("Longest Session Time: " + longest, EditorStyles.boldLabel);
-        GUILayout.Label("Longest Session Date: " + dataFile.LongestSessionDate, EditorStyles.boldLabel);
+        GUILayout.Label("Longest Session Date: " + _dataFile.LongestSessionDate, EditorStyles.boldLabel);
     }
 
     private string CalculateClockTime(float time)

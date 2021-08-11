@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-//[CreateAssetMenu(fileName = "ProjectStats", menuName = "General/ProjectStats", order = 1)]
 public class ProjectStatsObject : ScriptableObject
 {
     [SerializeField] [HideInInspector] private int _totalEditorEntries;
@@ -14,12 +13,12 @@ public class ProjectStatsObject : ScriptableObject
 
     #region Public 
 
-    public int TotalEditorEntries { get => _totalEditorEntries; }
-    public int TotalTotalTime { get => _totalProjectTime; }
-    public int LongestSession { get => _longestSession; }
-    public string StartDate { get => _startDate; }
-    public string LongestSessionDate { get => _longestSessionDate; }
-    public int CurrentSessionTime { get => _currentSessionTime; }
+    public int TotalEditorEntries => _totalEditorEntries; 
+    public int TotalTotalTime => _totalProjectTime; 
+    public int LongestSession => _longestSession; 
+    public string StartDate  => _startDate; 
+    public string LongestSessionDate => _longestSessionDate; 
+    public int CurrentSessionTime => _currentSessionTime; 
 
     public void SetTotalTime(int i)
     {
@@ -48,6 +47,17 @@ public class ProjectStatsObject : ScriptableObject
     public void SetEditorSessionEnd()
     {
         _totalEditorEntries += 1;
+    }
+
+    public void RestartData()
+    {
+        _totalEditorEntries = 0;
+        _totalProjectTime = 0;
+        _longestSession = 0;
+        _startDate = null;
+        _currentSessionTime = 0;
+
+        SetStartDate();
     }
 
     #endregion

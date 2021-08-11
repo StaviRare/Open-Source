@@ -1,5 +1,4 @@
 using UnityEditor;
-using UnityEngine;
 
 [InitializeOnLoad]
 class ProjectStatsManager
@@ -16,11 +15,18 @@ class ProjectStatsManager
 
     private static void OnEditorUpdate()
     {
-        GetDataFile();
-
         if (DataFile == null)
-            return;
+        {
+            DataFile = ProjectStatsFileHandler.DataFile;
 
+            if (DataFile != null)
+            {
+                FirstEditorUpdate();
+            }
+
+            return;
+        }
+            
         GetTimeSinceStartup();
     }
 
@@ -38,15 +44,6 @@ class ProjectStatsManager
     {
         _timeSinceStartup = (int) EditorApplication.timeSinceStartup;
         DataFile.SetCurrentTime(_timeSinceStartup);
-    }
-
-    private static void GetDataFile()
-    {
-        if (DataFile != null)
-            return;
-
-        DataFile = Resources.Load("Data") as ProjectStatsObject;
-        FirstEditorUpdate();
     }
 
     private static void FirstEditorUpdate()

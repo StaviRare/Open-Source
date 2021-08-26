@@ -7,6 +7,7 @@ Developed under Unity 2020.3.0f1 (Universal Renderer)
 ## Features
 
 - Light Style:
+
 A char-based animation system for Realtime Lighting
 The system is under terms of the GNU General Public License
 Since some of it's code based on the original Quake source code

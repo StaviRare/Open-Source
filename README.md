@@ -1,24 +1,24 @@
 # Open-Source
-A collection of tools I have developed over the years<br/>
-I started uploading recently, there is a lot more on the way
+A collection of tools I have developed over the years <br/>
+I started uploading recently, there is a lot more on the way <br/>
 Developed under Unity 2020.3.0f1 (Universal Renderer)
 
 ## Features
 
-- Light Style:<br/>
-A char-based animation system for realtime lighting<br/>
+- Light Style: <br/>
+A char-based animation system for realtime lighting <br/>
 The system is under terms of the GNU General Public License <br/>
 (Some of it's code based on the original Quake source code)
 
-- Project Stats:<br/>
+- Project Stats: <br/>
 Basic project statistical tool <br/>
 (More updates and information soon)
 
-- Folding Variables:<br/>
+- Folding Variables: <br/>
 Atrribute for placing variables in a foldout group
 (Regardless their arrangement)
 
-- Language System v1:<br/>
+- Language System v1: <br/>
 A basic key-value language system <br/>
 With an emphasis on receiving information from web get operations
 

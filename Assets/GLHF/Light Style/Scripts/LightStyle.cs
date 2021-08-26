@@ -13,29 +13,20 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-// This LightStyle system is based on the following source code
+// This script is based on the following piece of code
 // https://github.com/id-Software/Quake/blob/bf4ac424ce754894ac8f1dae6a3981954bc9852d/QW/client/r_light.c#L33-L53
 
-
 using UnityEngine;
-using GLHF.LightStyle;
 
-[RequireComponent(typeof(Light))]
 public class LightStyle : MonoBehaviour
 {
+    [SerializeField] private string value;
     [Min(0)] [SerializeField] private int _speed = 10;
     [Min(0)] [SerializeField] private float _intensity = 1;
-    [SerializeField] private LightStyleType _styleType;
-
-    [Header("Custom Style")]
-    [SerializeField] private bool _isCustomStyle = false;
-    [SerializeField] private string _customStyleValue = "m";
-
 
     private int[] _styleValueArray;
 
     private Light _lightSource => GetComponent<Light>();
-
 
     private void Awake()
     {
@@ -51,17 +42,11 @@ public class LightStyle : MonoBehaviour
     private void SetStyleValueArray()
     {
         int k;
-        var styleIndex = (int)_styleType;
-        var lightStyle = LightStyleUtility.Value[styleIndex];
+        var lightStyle = value;
 
-        if (_isCustomStyle)
+        if (lightStyle == "")
         {
-            lightStyle = _customStyleValue;
-
-            if (lightStyle == "")
-            {
-                lightStyle = "m";
-            }
+            lightStyle = "m";
         }
 
         _styleValueArray = new int[lightStyle.Length];

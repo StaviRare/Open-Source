@@ -1,7 +1,6 @@
 # Open-Source
-A collection of tools I have developed over the years
+A collection of tools I have developed over the years<br/>
 I started uploading recently, there is a lot more on the way
-
 Developed under Unity 2020.3.0f1 (Universal Renderer)
 
 ## Features

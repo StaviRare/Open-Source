@@ -1,8 +1,11 @@
 using System;
 
-[Serializable]
-public class LightStyleObject
+namespace GLHF.LightStyles
 {
-    public string Name;
-    public string Value;
+    [Serializable]
+    public class LightStyleObject
+    {
+        public string Name;
+        public string Value;
+    }
 }

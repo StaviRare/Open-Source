@@ -16,43 +16,44 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 // This script is based on the following piece of code
 // https://github.com/id-Software/Quake/blob/bf4ac424ce754894ac8f1dae6a3981954bc9852d/QW/progs/world.qc#L302-L345
 
-
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class LightStyleData : ScriptableObject
+namespace GLHF.LightStyles
 {
-    public List<LightStyleObject> Items;
-
-    private void Reset()
+    [Serializable]
+    public class LightStyleData : ScriptableObject
     {
-        Items = new List<LightStyleObject>();
+        public List<LightStyleObject> Items;
 
-        AddLightStyle("Normal", "m");
-        AddLightStyle("Flicker 1", "mmnmmommommnonmmonqnmmo");
-        AddLightStyle("Slow Strong Pulse", "abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba");
-        AddLightStyle("Candle 1", "mmmmmaaaaammmmmaaaaaabcdefgabcdefg");
-        AddLightStyle("Fast Strobe", "mamamamamama");
-        AddLightStyle("Gentle Pulse", "jklmnopqrstuvwxyzyxwvutsrqponmlkj");
-        AddLightStyle("Flicker 2", "nmonqnmomnmomomno");
-        AddLightStyle("Candle 2", "mmmaaaabcdefgmmmmaaaammmaamm");
-        AddLightStyle("Candle 3", "mmmaaammmaaammmabcdefaaaammmmabcdefmmmaaaa");
-        AddLightStyle("Slow Strobe", "aaaaaaaazzzzzzzz");
-        AddLightStyle("Fluorescent Flicker", "mmamammmmammamamaaamammma");
-        AddLightStyle("Slow Pulse Not Fade To Black", "abcdefghijklmnopqrrqponmlkjihgfedcba");
-    }
-
-    private void AddLightStyle(string name, string value)
-    {
-        var newLightStyle = new LightStyleObject()
+        private void Reset()
         {
-            Name = name,
-            Value = value
-        };
+            Items = new List<LightStyleObject>();
 
-        Items.Add(newLightStyle);
+            AddLightStyle("Normal", "m");
+            AddLightStyle("Flicker 1", "mmnmmommommnonmmonqnmmo");
+            AddLightStyle("Slow Strong Pulse", "abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba");
+            AddLightStyle("Candle 1", "mmmmmaaaaammmmmaaaaaabcdefgabcdefg");
+            AddLightStyle("Fast Strobe", "mamamamamama");
+            AddLightStyle("Gentle Pulse", "jklmnopqrstuvwxyzyxwvutsrqponmlkj");
+            AddLightStyle("Flicker 2", "nmonqnmomnmomomno");
+            AddLightStyle("Candle 2", "mmmaaaabcdefgmmmmaaaammmaamm");
+            AddLightStyle("Candle 3", "mmmaaammmaaammmabcdefaaaammmmabcdefmmmaaaa");
+            AddLightStyle("Slow Strobe", "aaaaaaaazzzzzzzz");
+            AddLightStyle("Fluorescent Flicker", "mmamammmmammamamaaamammma");
+            AddLightStyle("Slow Pulse Not Fade To Black", "abcdefghijklmnopqrrqponmlkjihgfedcba");
+        }
+
+        private void AddLightStyle(string name, string value)
+        {
+            var newLightStyle = new LightStyleObject()
+            {
+                Name = name,
+                Value = value
+            };
+
+            Items.Add(newLightStyle);
+        }
     }
 }

@@ -18,53 +18,56 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 using UnityEngine;
 
-public class LightStyle : MonoBehaviour
+namespace GLHF.LightStyles
 {
-    [SerializeField] private string value;
-    [Min(0)] [SerializeField] private int _speed = 10;
-    [Min(0)] [SerializeField] private float _intensity = 1;
-
-    private int[] _styleValueArray;
-
-    private Light _lightSource => GetComponent<Light>();
-
-    private void Awake()
+    public class LightStyle : MonoBehaviour
     {
-        _intensity = _lightSource.intensity;
-    }
+        [SerializeField] private string value;
+        [Min(0)] [SerializeField] private int _speed = 10;
+        [Min(0)] [SerializeField] private float _intensity = 1;
 
-    private void Update()
-    {
-        SetStyleValueArray();
-        AnimateLight();
-    }
+        private int[] _styleValueArray;
 
-    private void SetStyleValueArray()
-    {
-        int k;
-        var lightStyle = value;
+        private Light _lightSource => GetComponent<Light>();
 
-        if (lightStyle == "")
+        private void Awake()
         {
-            lightStyle = "m";
+            _intensity = _lightSource.intensity;
         }
 
-        _styleValueArray = new int[lightStyle.Length];
-
-        for (int index = 0; index < lightStyle.Length; index++)
+        private void Update()
         {
-            k = lightStyle[index] - 'a';
-            k *= 22;
-            _styleValueArray[index] = k;
+            SetStyleValueArray();
+            AnimateLight();
         }
-    }
 
-    private void AnimateLight()
-    {
-        var k = (int)(Time.time * _speed);
-        var value = k % _styleValueArray.Length;
-        var newIntensity = _intensity * ((float)_styleValueArray[value] / 256);
+        private void SetStyleValueArray()
+        {
+            int k;
+            var lightStyle = value;
 
-        _lightSource.intensity = newIntensity;
+            if (lightStyle == "")
+            {
+                lightStyle = "m";
+            }
+
+            _styleValueArray = new int[lightStyle.Length];
+
+            for (int index = 0; index < lightStyle.Length; index++)
+            {
+                k = lightStyle[index] - 'a';
+                k *= 22;
+                _styleValueArray[index] = k;
+            }
+        }
+
+        private void AnimateLight()
+        {
+            var k = (int)(Time.time * _speed);
+            var value = k % _styleValueArray.Length;
+            var newIntensity = _intensity * ((float)_styleValueArray[value] / 256);
+
+            _lightSource.intensity = newIntensity;
+        }
     }
 }

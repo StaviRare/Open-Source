@@ -12,11 +12,12 @@ The system is under terms of the GNU General Public License <br/>
 (Some of it's code based on the original Quake source code)
 
 - Project Stats:<br/>
-Basic project statistic utility <br/>
+Basic project statistical tool <br/>
 (More updates and information soon)
 
 - Folding Variables:<br/>
 Atrribute for placing variables in a foldout group
+(Regardless their arrangement)
 
 - Language System v1:<br/>
 A basic key-value language system <br/>
@@ -24,4 +25,4 @@ With an emphasis on receiving information from web get operations
 
 ## License
 [MIT](https://github.com/StaviRare/Open-Source/blob/main/LICENSE)
-
+[GNU - Light Style](https://github.com/id-Software/Quake/blob/bf4ac424ce754894ac8f1dae6a3981954bc9852d/gnu.txt)

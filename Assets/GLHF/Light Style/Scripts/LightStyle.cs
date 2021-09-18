@@ -24,8 +24,8 @@ namespace GLHF.LightStyles
     {
         [SerializeField] private string value;
         [Min(0)] [SerializeField] private int _speed = 10;
-        [Min(0)] [SerializeField] private float _intensity = 1;
-
+        
+        private float _intensity;
         private int[] _styleValueArray;
 
         private Light _lightSource => GetComponent<Light>();

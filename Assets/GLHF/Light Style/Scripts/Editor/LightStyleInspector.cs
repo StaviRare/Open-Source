@@ -11,21 +11,25 @@ namespace GLHF.LightStyles
     public class LightStyleInspector : Editor
     {
         private SerializedProperty _valueProperty;
+        private SerializedProperty _speedProperty;
 
         private void OnEnable()
         {
             _valueProperty = serializedObject.FindProperty("value");
+            _speedProperty = serializedObject.FindProperty("_speed");
         }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_speed"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_intensity"));
+            EditorGUILayout.PropertyField(_speedProperty);
 
             EditorGUILayout.Space();
+            DrawLightStyleOptions();
+        }
 
+        private void DrawLightStyleOptions()
+        {
             // Get the latest light style list
             var ligthStyleData = LightStyleDataFileHandler.DataFile;
             var dataFileIsMissing = ligthStyleData == null;

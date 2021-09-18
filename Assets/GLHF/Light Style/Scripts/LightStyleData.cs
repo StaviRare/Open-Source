@@ -31,6 +31,8 @@ namespace GLHF.LightStyles
         {
             Items = new List<LightStyleObject>();
 
+            // Setup light animation tables. 'a' is total darkness, 'z' is maxbright.
+
             AddLightStyle("Normal", "m");
             AddLightStyle("Flicker 1", "mmnmmommommnonmmonqnmmo");
             AddLightStyle("Slow Strong Pulse", "abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba");

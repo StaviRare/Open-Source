@@ -11,7 +11,6 @@ The system is under terms of the GNU General Public License <br/>
 (Some of it's code based on the original Quake source code)
 
 - Project Stats: <br/>
-A Collection of project related information, includes: <br/>
 	- Total edit, play and project duration and dates
  	- Project scripts line, word and file count
  	- And more!

@@ -13,7 +13,7 @@ The system is under terms of the GNU General Public License <br/>
 ##### Project Stats (Beta): 
 >A Collection of project related information, includes: <br/>
 -Edit and play mode usage time <br/>
--Script word, line and file count <br/>
+-C# Scripts word, line and file count <br/>
 -And more!
 
 ##### Folding Variables:

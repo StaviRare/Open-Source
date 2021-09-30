@@ -1,6 +1,6 @@
 # Good Luck, Have Fun
-A collection of tools I have developed over the years <br/>
-There's a lot to be uploaded, so stay tuned for more! <br/>
+A collection of tools I developed over the years <br/>
+There's a lot more coming, so stay tuned for more! <br/>
 Developed under Unity 2020.3.0f1, Universal Renderer
 
 ## Features

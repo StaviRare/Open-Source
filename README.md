@@ -25,5 +25,5 @@ The system is under terms of the GNU General Public License
 With an emphasis on receiving information from web get operations
 
 ## License
-[MIT](https://github.com/StaviRare/Open-Source/blob/main/LICENSE)
-[GNU (Light Style)](https://github.com/id-Software/Quake/blob/bf4ac424ce754894ac8f1dae6a3981954bc9852d/gnu.txt)
+[MIT](https://github.com/StaviRare/Open-Source/blob/main/LICENSE)<br/>
+[GNU (Light Style)](https://github.com/id-Software/Quake/blob/bf4ac424ce754894ac8f1dae6a3981954bc9852d/gnu.txt)<br/>

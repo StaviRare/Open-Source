@@ -10,11 +10,11 @@ A char-based animation system for realtime lighting <br/>
 The system is under terms of the GNU General Public License <br/>
 (Some of it's code based on the original Quake source code)
 
-- Project Stats: <br/>
+- Project Stats (Beta): <br/>
 A Collection of project related information, includes: <br/>
-	- Total edit, play and project duration and dates
- 	- Project scripts line, word and file count
- 	- And more!
+* Edit and play mode usage time
+* Script word, line and file count
+* And more!
 
 - Folding Variables: <br/>
 Atrribute for placing variables in a foldout group

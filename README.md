@@ -12,9 +12,9 @@ The system is under terms of the GNU General Public License <br/>
 
 - Project Stats (Beta): <br/>
 A Collection of project related information, includes: <br/>
- -Edit and play mode usage time
- -Script word, line and file count
- -And more!
+>Edit and play mode usage time
+>Script word, line and file count
+>And more!
 
 - Folding Variables: <br/>
 Atrribute for placing variables in a foldout group

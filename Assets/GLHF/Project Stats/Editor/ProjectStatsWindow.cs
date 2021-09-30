@@ -129,7 +129,7 @@ public class ProjectStatsWindow : EditorWindow
         customFolder = EditorGUILayout.ObjectField(customFolder, typeof(DefaultAsset), false);
         EditorGUILayout.HelpBox("Null reference will be considered as default (Assets folder)", MessageType.None);
 
-        var lastDataGatherDate = fileStats.LastDataGatherDate;
+        var lastDataGatherDate = DateTime.Parse(fileStats.LastDataGatherDate).ToString(dateFormat);
         var dataHasBeenAlreadyGathered = !String.IsNullOrEmpty(lastDataGatherDate);
         var lastUpdatedTitle = dataHasBeenAlreadyGathered ? lastDataGatherDate : "Never";
         var collectDataButtonTitle = "Collect Data";

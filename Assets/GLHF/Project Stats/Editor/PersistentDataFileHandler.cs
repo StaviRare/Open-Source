@@ -63,7 +63,7 @@ namespace GLHF.ProjectStats
 
             DataFile = ScriptableObject.CreateInstance<PersistentDataObject>();
             AssetDatabase.CreateAsset(DataFile, dataFilePath + dataFileName + ".asset");
-            AssetDatabase.SaveAssets();
+            SaveDataFile();
         }
     }
 }

@@ -20,6 +20,10 @@ The system is under terms of the GNU General Public License <br/>
 >Atrribute for placing variables in a foldout group <br/>
 (Regardless their arrangement)
 
+##### MonoBehaviour Singletons: 
+>Singleton system for MonoBehaviours <br/>
+With an emphasis on receiving information from web get operations
+
 ##### Language System (v1): 
 >A basic key-value language system <br/>
 With an emphasis on receiving information from web get operations

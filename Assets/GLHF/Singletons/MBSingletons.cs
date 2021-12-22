@@ -13,7 +13,7 @@ namespace GLHF.Singletons
         public static T Get<T>() where T : MonoBehaviour
         {
             var instanceType = typeof(T);
-            var instanceDoesExist = sharedInstances[instanceType] != null;
+            var instanceDoesExist = sharedInstances.ContainsKey(instanceType);
 
             if (instanceDoesExist)
             {

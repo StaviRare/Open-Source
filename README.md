@@ -16,6 +16,9 @@ The system is under terms of the GNU General Public License <br/>
 -C# Scripts word, line and file count <br/>
 -And more!
 
+##### Pool Manager:
+>Object oriented pool system <br/>
+
 ##### Folding Variables:
 >Atrribute for placing variables in a foldout group <br/>
 (Regardless their arrangement)

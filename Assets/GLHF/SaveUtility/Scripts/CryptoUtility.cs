@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using UnityEngine;
 
 namespace GLHF.SaveUtility
 {
@@ -111,8 +112,8 @@ namespace GLHF.SaveUtility
             var customIV = GenerateCustomIV();
             var customKey = GenerateCustomKey();
 
-            UnityEngine.Debug.Log("Get IV: " + customIV);
-            UnityEngine.Debug.Log("Get Key: " + customIV);
+            Debug.Log("Get IV: " + customIV);
+            Debug.Log("Get Key: " + customIV);
 
             var combinedKeyAndIV = customIV + "," + customKey;
             var customCodeAsByteArray = ASCIIEncoding.UTF8.GetBytes(combinedKeyAndIV);
@@ -138,8 +139,8 @@ namespace GLHF.SaveUtility
             var customIV = combinedKeyAndIV.Split(',')[0];
             var customKey = combinedKeyAndIV.Split(',')[1];
 
-            UnityEngine.Debug.Log("Set IV: " + customIV);
-            UnityEngine.Debug.Log("Set Key: " + customIV);
+            Debug.Log("Set IV: " + customIV);
+            Debug.Log("Set Key: " + customKey);
 
             SetCustomIV(customIV);
             SetCustomKey(customKey);

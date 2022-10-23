@@ -22,18 +22,11 @@ namespace GLHF.PoolManager.ExampleTurret
         [SerializeField] private GameObject projectilePrefab;
         
         private float timer;
-        private PoolManager poolManager;
         private SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
 
         private void Start()
         {
-            poolManager = PoolManager.Instance;
-            var poolManagerExists = poolManager != null;
-
-            if (poolManagerExists)
-            {
-                CreatePool();
-            }
+            CreatePool();
         }
 
         private void Update()
@@ -56,7 +49,7 @@ namespace GLHF.PoolManager.ExampleTurret
                 poolSize = poolSize
             };
 
-            poolManager.CreatePool(poolConfig);
+            PoolManager.CreatePool(poolConfig);
         }
 
         private void SpawnCounter()
@@ -77,24 +70,21 @@ namespace GLHF.PoolManager.ExampleTurret
 
         private void TrySpawning()
         {
-            if (poolManager != null)
+            var bulletObj = PoolManager.GetPoolObjectByName(bulletPoolName);
+
+            if (bulletObj != null)
             {
-                var bulletObj = poolManager.GetPoolObjectByName(bulletPoolName);
-
-                if (bulletObj != null)
+                var projectile = bulletObj.GetComponent<TurretProjectile>();
+                var projectileData = new TurretProjectileData()
                 {
-                    var projectile = bulletObj.GetComponent<TurretProjectile>();
-                    var projectileData = new TurretProjectileData()
-                    {
-                        Speed = speed,
-                        DisableDelay = disableDelay,
-                        StartPosition = this.transform.position,
-                        Direction = Random.insideUnitCircle.normalized,
-                        MainColor = mainColor
-                    };
+                    Speed = speed,
+                    DisableDelay = disableDelay,
+                    StartPosition = this.transform.position,
+                    Direction = Random.insideUnitCircle.normalized,
+                    MainColor = mainColor
+                };
 
-                    projectile.SetData(projectileData);
-                }
+                projectile.SetData(projectileData);
             }
         }
     }

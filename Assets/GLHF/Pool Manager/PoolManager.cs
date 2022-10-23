@@ -3,109 +3,84 @@ using UnityEngine;
 
 namespace GLHF.PoolManager
 {
-    public class PoolManager : MonoBehaviour
+    public static class PoolManager
     {
-        public static PoolManager Instance;
+        private static Transform _poolContainer;
+        private static List<PoolObject> _poolList = new List<PoolObject>();
 
-        private List<PoolObject> poolList;
 
-        #region Public 
-
-        public void CreatePool(PoolConfig poolConfig)
+        public static void CreatePool(PoolConfig poolConfig)
         {
-            var poolExists
-                = GetPoolObjectByName(poolConfig.poolName) != null;
+            if (_poolContainer == null)
+            {
+                _poolContainer = new GameObject("Pool Container").transform;
+            }
 
-            if (poolExists)
+            var poolDoesNotExists = GetPoolObjectByName(poolConfig.poolName) == null;
+
+            if (poolDoesNotExists)
+            {
+                var newPool = new PoolObject()
+                {
+                    config = poolConfig,
+                    parentObject = new GameObject(poolConfig.poolName),
+                    objectList = new List<GameObject>()
+                };
+
+                newPool.parentObject.transform.parent = _poolContainer;
+
+                for (int i = 0; i < poolConfig.poolSize; i++)
+                {
+                    InstantiateObjectInPool(newPool);
+                }
+
+                _poolList.Add(newPool);
+            }
+            else
             {
                 Debug.Log("Pool Name: \"" + poolConfig.poolName + "\" already exists!");
-                return;
             }
-
-            var newPool = new PoolObject()
-            {
-                config = poolConfig,
-                parentObject = new GameObject(poolConfig.poolName),
-                objectList = new List<GameObject>()
-            };
-
-            for (int i = 0; i < poolConfig.poolSize; i++)
-            {
-                InstantiateObjectInPool(newPool);
-            }
-
-            poolList.Add(newPool);
-            newPool.parentObject.transform.parent = transform;
         }
 
-        public void DestroyPool(PoolConfig poolConfig)
+        public static void DestroyPool(PoolConfig poolConfig)
         {
-            var specifiedPool = poolList.Find(x => x.config == poolConfig);
+            var specifiedPool = _poolList.Find(x => x.config == poolConfig);
 
-            if (specifiedPool == null)
-                return;
-
-            poolList.Remove(specifiedPool);
-            Destroy(specifiedPool.parentObject);
+            if (specifiedPool != null)
+            {
+                _poolList.Remove(specifiedPool);
+                Object.Destroy(specifiedPool.parentObject);
+            }
         }
 
-        public PoolConfig GetPoolConfigByName(string poolName)
+        public static PoolConfig GetPoolConfigByName(string poolName)
         {
-            var specifiedPool = poolList.Find(x => x.config.poolName == poolName);
+            var specifiedPool = _poolList.Find(x => x.config.poolName == poolName);
             return specifiedPool.config;
         }
 
-        public GameObject GetPoolObjectByName(string poolName)
+        public static GameObject GetPoolObjectByName(string poolName)
         {
-            var specifiedPool = poolList.Find(x => x.config.poolName == poolName);
+            var specifiedPool = _poolList.Find(x => x.config.poolName == poolName);
+            var returnValue = specifiedPool == null ? null : GetAvailablePoolObject(specifiedPool);
 
-            if (specifiedPool == null)
-                return null;
-
-            return GetAvailablePoolObject(specifiedPool);
+            return returnValue;
         }
 
-        public GameObject GetPoolObjectByConfig(PoolConfig poolConfig)
+        public static GameObject GetPoolObjectByConfig(PoolConfig poolConfig)
         {
-            var specifiedPool = poolList.Find(x => x.config == poolConfig);
+            var specifiedPool = _poolList.Find(x => x.config == poolConfig);
+            var returnValue = specifiedPool == null ? null : GetAvailablePoolObject(specifiedPool);
 
-            if (specifiedPool == null)
-                return null;
-
-            return GetAvailablePoolObject(specifiedPool);
+            return returnValue;
         }
 
-        #endregion
 
-
-        #region Private
-
-        private void Awake()
-        {
-            SingletonCheck();
-
-            poolList = new List<PoolObject>();
-        }
-
-        private void SingletonCheck()
-        {
-            var instanceAlreadyExists
-                = Instance != null && Instance != this;
-
-            if (instanceAlreadyExists)
-            {
-                Destroy(this.gameObject);
-                return;
-            }
-
-            Instance = this;
-        }
-
-        private GameObject InstantiateObjectInPool(PoolObject poolItemList)
+        private static GameObject InstantiateObjectInPool(PoolObject poolItemList)
         {
             var poolPrefab = poolItemList.config.poolPrefab;
             var poolParent = poolItemList.parentObject.transform;
-            var instantiatedPoolObject = Instantiate(poolPrefab, poolParent);
+            var instantiatedPoolObject = Object.Instantiate(poolPrefab, poolParent);
 
             instantiatedPoolObject.SetActive(false);
             poolItemList.objectList.Add(instantiatedPoolObject);
@@ -113,14 +88,15 @@ namespace GLHF.PoolManager
             return instantiatedPoolObject;
         }
 
-        private GameObject GetAvailablePoolObject(PoolObject poolObject)
+        private static GameObject GetAvailablePoolObject(PoolObject poolObject)
         {
             for (int i = 0; i < poolObject.objectList.Count; i++)
             {
-                var availableObjectFromPool
-                    = !poolObject.objectList[i].activeInHierarchy;
+                var objectIsAvailable = 
+                    poolObject.objectList[i] != null 
+                    && poolObject.objectList[i].activeInHierarchy == false;
 
-                if (availableObjectFromPool)
+                if (objectIsAvailable)
                 {
                     return poolObject.objectList[i];
                 }
@@ -128,13 +104,12 @@ namespace GLHF.PoolManager
 
             if (poolObject.config.poolCanExpand)
             {
-                var obj = InstantiateObjectInPool(poolObject);
-                return obj;
+                return InstantiateObjectInPool(poolObject);
             }
-
-            return null;
+            else
+            {
+                return null;
+            }
         }
-
-        #endregion
     }
 }

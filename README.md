@@ -22,7 +22,7 @@ The system is under terms of the GNU General Public License <br/>
 ##### Save Utility:
 > Saving utility that uses RijndaelManaged for encryption <br/>
 
-##### Folding Variables:
+##### Folding Variables v2:
 >Atrribute for placing variables in a foldout group <br/>
 (Regardless their arrangement)
 

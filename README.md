@@ -16,6 +16,9 @@ The system is under terms of the GNU General Public License <br/>
 -C# Scripts word, line and file count <br/>
 -And more!
 
+##### Audio Sound:
+>A Toolset for simple and immersive audio management, offering easy sound creation, spatialization, and mixer integration for seamless implementation of game sounds and music. <br/>
+
 ##### Pool Manager:
 >Object oriented pool system <br/>
 

@@ -51,12 +51,19 @@ namespace GLHF.FoldingVariables2
 
         public override void OnInspectorGUI()
         {
-            serializedObject.Update();
+            if (_foldoutGroups.Count > 0)
+            {
+                serializedObject.Update();
 
-            DrawRegularProperties();
-            DrawFoldingVariables();
+                DrawRegularProperties();
+                DrawFoldingVariables();
 
-            serializedObject.ApplyModifiedProperties();
+                serializedObject.ApplyModifiedProperties();
+            }
+            else
+            {
+                DrawDefaultInspector();
+            }
         }
 
         private void DrawRegularProperties()

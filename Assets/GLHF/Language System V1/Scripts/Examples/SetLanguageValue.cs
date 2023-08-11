@@ -1,12 +1,12 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 using GLHF.LanguageSystemV1;
 
 public class SetLanguageValue : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI menuItem01;
-    [SerializeField] private TextMeshProUGUI menuItem02;
-    [SerializeField] private TextMeshProUGUI menuItem03;
+    [SerializeField] private Text menuItem01;
+    [SerializeField] private Text menuItem02;
+    [SerializeField] private Text menuItem03;
 
     private void Awake()
     {

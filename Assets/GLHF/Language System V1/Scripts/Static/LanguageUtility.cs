@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 namespace GLHF.LanguageSystemV1
 {
@@ -9,10 +9,12 @@ namespace GLHF.LanguageSystemV1
         public static event Action OnLanguageSet;
         private static LanguagePackage _languageContent;
 
-        public static void SetText(TextMeshProUGUI textObject, string key)
+        public static void SetText(Text textObject, string key)
         {
             textObject.text = GetLanguageValueFromKey(key);
-            textObject.isRightToLeftText = _languageContent.IsRTL;
+            
+            // If you're using TMP:
+            //textObject.isRightToLeftText = _languageContent.IsRTL;
         }
 
         public static void SetLanguage(LanguagePackage languageList)

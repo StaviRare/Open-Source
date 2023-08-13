@@ -65,6 +65,7 @@ namespace GLHF.AudioSound
 
         private static AudioSource CreateAudioObject(string sfxName)
         {
+            // Consider using a pooling system for improved efficiency.
             var audioGameObject = new GameObject("Audio: " + sfxName);
             var audioSource = audioGameObject.AddComponent<AudioSource>();
             var audioObject = audioGameObject.AddComponent<AudioObject>();

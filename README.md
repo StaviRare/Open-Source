@@ -1,4 +1,4 @@
-# Good Luck, Have Fun Toolbox
+# Good Luck, Have Fun (Toolbox)
 
 This toolbox comprises a collection of tools developed over the years, using Unity 2020.3.0f1 with the Universal Renderer. Stay tuned for more updates!
 

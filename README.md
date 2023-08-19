@@ -8,6 +8,7 @@ This toolbox comprises a collection of tools developed over the years, using Uni
 ### Experiments:
 
 - **Light Style**: A character-based animation system for dynamic real-time lighting. Distributed under the GNU General Public License (Inspired by certain aspects of the original Quake source code)
+- **Material Type**: A shader-based system akin to Source engine's material properties. It empowers developers to link a type to a material for runtime use, enhancing effects like bullet holes, footstep sounds, and more.
 
 ### Modules:
 

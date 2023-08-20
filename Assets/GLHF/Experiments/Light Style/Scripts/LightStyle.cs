@@ -20,6 +20,7 @@ using UnityEngine;
 
 namespace GLHF.LightStyles
 {
+    [RequireComponent(typeof(Light))]
     public class LightStyle : MonoBehaviour
     {
         [SerializeField] private string value;

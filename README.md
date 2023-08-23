@@ -7,7 +7,7 @@ This toolbox comprises a collection of tools developed over the years, using Uni
 
 ### Experiments:
 
-- **Light Style**: A character-based animation system for dynamic real-time lighting. Distributed under the GNU General Public License (Inspired by certain aspects of the original Quake source code)
+- **Light Style**: A char-based animation system for dynamic real-time lighting. Distributed under the GNU General Public License (Inspired by certain aspects of the original Quake source code)
 - **Material Type**: A shader-based system akin to Source engine's material properties. It empowers developers to link a type to a material for runtime use, enhancing effects like bullet holes, footstep sounds, and more.
 
 ### Modules:
@@ -16,7 +16,7 @@ This toolbox comprises a collection of tools developed over the years, using Uni
 
 - **Pooling**: Object-oriented pool system
 
-- **Save Utility**: Efficient storage utility employing RijndaelManaged encryption
+- **Save Utility**: Efficient data storage utility employing RijndaelManaged encryption
 
 - **Singletons**: A singleton framework tailored for MonoBehaviours
 
@@ -24,10 +24,10 @@ This toolbox comprises a collection of tools developed over the years, using Uni
 
 ### Editor Tools:
 
-- **Auto Grid**: Precision is paramount. Align objects flawlessly using our snapping-enabled Auto Grid tool, complete with time-saving shortcuts.
+- **Auto Grid**: Achieve impeccable alignment of objects using the snapping-enabled tool, accompanied by efficient time-saving shortcuts.
 
-- **Developer Note**: Seamlessly integrate developer notes into both Game and SceneView. Customize the display style and positioning to match your preferences.
+- **Developer Note**: Seamlessly integrate developer notes into both GameView and SceneView. Customize the display style and positioning to match your preferences.
 
-- **Project Stats**: Stay on top of your project's vital statistics. Gain insights into edit and play mode usage times, word, line, and file counts of your C# scripts, and much more.
+- **Project Stats**: Obtain insights regarding usage times in both edit and play modes, project file specifics, and much more.
 
 - **Folding Variables**: An attribute designed to group variables within a collapsible section

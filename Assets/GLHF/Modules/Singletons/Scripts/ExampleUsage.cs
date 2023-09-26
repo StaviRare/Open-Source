@@ -12,7 +12,7 @@ namespace GLHF.Singletons
 
         private void Update()
         {
-            var mySingleton = MBSingletons.Get<ExampleRegister>();
+            var mySingleton = MonoBehaviourRegistry.Get<ExampleRegister>();
 
             if (mySingleton == null)
                 return;

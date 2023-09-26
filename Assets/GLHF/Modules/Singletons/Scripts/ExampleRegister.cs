@@ -9,7 +9,12 @@ namespace GLHF.Singletons
 
         private void Awake()
         {
-            MBSingletons.Register(this);
+            MonoBehaviourRegistry.Register(this);
+        }
+
+        private void OnDestroy()
+        {
+            MonoBehaviourRegistry.Unregister(this);
         }
 
         public void UpdateMyInt(int i)
